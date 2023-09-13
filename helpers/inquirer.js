@@ -61,11 +61,7 @@ const preguntasClientes = [
             },
             {
                 value: '3',
-                name: `${'3'.red}. Actualizar Cliente`
-            },
-            {
-                value: '4',
-                name: `${'4'.red}. Borrar Cliente`
+                name: `${'3'.red}. Borrar Cliente`
             },
             {
                 value: '0',
