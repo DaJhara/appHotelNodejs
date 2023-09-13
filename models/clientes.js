@@ -26,7 +26,7 @@ class Clientes{
         const cliente = Object.values(this._listado).find(cliente => cliente.id === id);
         if (cliente) {
             delete this._listado[cliente.id];
-            console.log('Cliente borrada con éxito.');
+            console.log('Cliente borrado con éxito.');
         } else {
             console.log('No existe cliente con ese ID.');
         }
