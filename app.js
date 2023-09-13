@@ -2,7 +2,9 @@ require("colors");
 const { inquirerMenu, pausa, leerInput, inquirerMenuClientes, inquirerMenuHabitaciones,
     inquirerMenuServicios, inquirerMenuReservas } = require('./helpers/inquirer');
 const { guardarDB } = require('./helpers/guardarArchivo');
-const Tareas = require('./models/clientes');
+const Clientes = require('./models/clientes');
+const Servicios = require('./models/servicios');
+const Habitaciones = require('./models/habitaciones');
 
 console.clear();
 const main = async () => {
