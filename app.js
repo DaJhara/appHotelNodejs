@@ -2,9 +2,7 @@ require("colors");
 const { inquirerMenu, pausa, leerInput, inquirerMenuClientes, inquirerMenuHabitaciones,
     inquirerMenuServicios, inquirerMenuReservas } = require('./helpers/inquirer');
 const { guardarDB } = require('./helpers/guardarArchivo');
-const Clientes = require("./models/clientes");
-const Servicios = require("./models/servicios");
-const Habitaciones = require("./models/habitaciones");
+const Tareas = require('./models/clientes');
 
 console.clear();
 const main = async () => {
@@ -21,10 +19,7 @@ const main = async () => {
                     opcionClientes = await inquirerMenuClientes();
                     switch (opcionClientes) {
                         case '1':
-                            const nombre = await leerInput('Nombre: ');
-                            const id = await leerInput('Identificación: ');
-                            const edad = await leerInput('Edad: ');
-                            cliente.registrarCliente(nombre, id, edad);
+                            // Lógica para registrar cliente
                             break;
                         case '2':
                             console.log(cliente.listadoArr);
