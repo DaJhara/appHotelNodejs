@@ -15,11 +15,11 @@ const preguntas = [
             },
             {
                 value: '2',
-                name: `${'2'.red}. Habitaciones`
+                name: `${'2'.red}. Servicios`
             },
             {
                 value: '3',
-                name: `${'3'.red}. Servicios`
+                name: `${'3'.red}. Habitaciones `
             },
             {
                 value: '4',
@@ -61,11 +61,7 @@ const preguntasClientes = [
             },
             {
                 value: '3',
-                name: `${'3'.red}. Actualizar Cliente`
-            },
-            {
-                value: '4',
-                name: `${'4'.red}. Borrar Cliente`
+                name: `${'3'.red}. Borrar Cliente`
             },
             {
                 value: '0',
@@ -111,11 +107,7 @@ const preguntasHabitaciones = [
             },
             {
                 value: '5',
-                name: `${'5'.red}. Modificar Habitación`
-            },
-            {
-                value: '6',
-                name: `${'6'.red}. Borrar Habitación`
+                name: `${'5'.red}. Borrar Habitación`
             },
             {
                 value: '0',
@@ -153,11 +145,7 @@ const preguntasServicios = [
             },
             {
                 value: '3',
-                name: `${'3'.red}. Editar servicio`
-            },
-            {
-                value: '4',
-                name: `${'4'.red}. Borrar servicios`
+                name: `${'3'.red}. Borrar servicios`
             },
             {
                 value: '0',
