@@ -3,6 +3,8 @@ const { inquirerMenu, pausa, leerInput, inquirerMenuClientes, inquirerMenuHabita
 inquirerMenuServicios, inquirerMenuReservas} = require('./helpers/inquirer');
 const { guardarDB } = require('./helpers/guardarArchivo');
 const Tareas = require('./models/clientes');
+const Cliente = require("./models/cliente");
+const Clientes = require("./models/clientes");
 
 console.clear();
 const main = async () => {
@@ -14,20 +16,22 @@ const main = async () => {
 
         switch (opt) {
             case '1':
+                const cliente = new Clientes();
                 do {
                     opcionClientes = await inquirerMenuClientes();
                     switch (opcionClientes) {
                         case '1':
-                            // Lógica para registrar cliente
+                            const nombre = await leerInput('Nombre: ');
+                            const id = await leerInput('Identificación: ');
+                            const edad = await leerInput('Edad: ');
+                            cliente.registrarCliente(nombre,id,edad);
                             break;
                         case '2':
-                            // Lógica para ver clientes registrados
+                            console.log(cliente.listadoArr);
                             break;
                         case '3':
-                            // Lógica para actualizar cliente
-                            break;
-                        case '4':
-                            // Lógica para borrar cliente
+                            const idBorrar = await leerInput('Ingrese el ID del cliente a borrar: ');
+                            cliente.borrarCliente(idBorrar);
                             break;
                         default:
                             break;
