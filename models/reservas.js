@@ -1,26 +1,16 @@
-const Habitacion = require('./habitacion');
+const Reserva = require('./reserva');
 
-class Habitaciones{
+class Reservas{
 
     _listado = {};
 
     get listadoArr(){
         const listado = [];
         Object.keys(this._listado).forEach(key =>{
-            const habitacion = this._listado[key];
-            listado.push(habitacion);
+            const reserva = this._listado[key];
+            listado.push(reserva);
         })
         return listado;
-    }
-
-    get listadoArrOcupadas() {
-        const listadoCompletas = Object.values(this._listado).filter(habitacion => habitacion.ocupada === true);
-        return listadoCompletas;
-    }
-
-    get listadoArrDisponibles() {
-        const listadoPendientes = Object.values(this._listado).filter(habitacion => habitacion.ocupada === false);
-        return listadoPendientes;
     }
 
     constructor(){

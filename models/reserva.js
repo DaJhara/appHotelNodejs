@@ -1,12 +1,16 @@
 class Reserva {
     id = '';
     idCliente = '';
-    fechaIngreso = "";
+    fechaIngreso = '';
+    dias = 0;
+    servicios = [];
 
-    constructor(nombre, id, edad){
-        this.nombre = nombre;
+    constructor(id, idCliente, fechaIngreso, dias, servicios) {
         this.id = id;
-        this.edad = edad;
+        this.idCliente = idCliente;
+        this.fechaIngreso = fechaIngreso;
+        this.dias = dias;
+        this.servicios = servicios;
     }
 }
 

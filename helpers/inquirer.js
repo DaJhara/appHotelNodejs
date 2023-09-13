@@ -73,7 +73,7 @@ const preguntasClientes = [
 
 const inquirerMenuClientes = async () =>{
     console.log("==================================================".green);
-    console.log("            Administración".blue);
+    console.log("            Clientes".blue);
     console.log("==================================================".green);
     let otp = '';
     const opt = await prompt(preguntasClientes).then(data => {
@@ -119,7 +119,7 @@ const preguntasHabitaciones = [
 
 const inquirerMenuHabitaciones = async () =>{
     console.log("==================================================".green);
-    console.log("            Administración".blue);
+    console.log("            Habitaciones".blue);
     console.log("==================================================".green);
     let otp = '';
     const opt = await prompt(preguntasHabitaciones).then(data => {
@@ -157,7 +157,7 @@ const preguntasServicios = [
 
 const inquirerMenuServicios = async () =>{
     console.log("==================================================".green);
-    console.log("            Administración".blue);
+    console.log("            Servicios".blue);
     console.log("==================================================".green);
     let otp = '';
     const opt = await prompt(preguntasServicios).then(data => {
@@ -199,7 +199,7 @@ const preguntasReservas = [
 
 const inquirerMenuReservas = async () =>{
     console.log("==================================================".green);
-    console.log("            Administración".blue);
+    console.log("            Reservas".blue);
     console.log("==================================================".green);
     let otp = '';
     const opt = await prompt(preguntasReservas).then(data => {
