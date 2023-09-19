@@ -1,27 +1,35 @@
 require("colors");
 const { inquirerMenu, pausa, leerInput, inquirerMenuClientes, inquirerMenuHabitaciones,
     inquirerMenuServicios, inquirerMenuReservas } = require('./helpers/inquirer');
-const { guardarDB } = require('./helpers/guardarArchivo');
+const { guardarDBClientes } = require('./helpers/guardarClientes');
+const { guardarDBHabitaciones } = require('./helpers/guardarHabitaciones');
+const { guardarDBReservas } = require('./helpers/guardarReservas');
 const Clientes = require('./models/clientes');
-const Servicios = require('./models/servicios');
 const Habitaciones = require('./models/habitaciones');
+const Reservas = require("./models/reservas");
+
+const fs = require('fs');
 
 console.clear();
 const main = async () => {
     let opt = '';
-    
-
     do {
         opt = await inquirerMenu();
+        const habitacion = new Habitaciones();
+        const cliente = new Clientes();
+        const reserva = new Reservas();
 
         switch (opt) {
             case '1':
-                const cliente = new Clientes();
+
                 do {
                     opcionClientes = await inquirerMenuClientes();
                     switch (opcionClientes) {
                         case '1':
-                            // Lógica para registrar cliente
+                            const id = await leerInput('ID del cliente: ');
+                            const nombre = await leerInput('Nombre del Cliente: ');
+                            const edad = await leerInput('Edad del Cliente: ');
+                            cliente.registrarCliente(id, nombre, edad);
                             break;
                         case '2':
                             console.log(cliente.listadoArr);
@@ -33,34 +41,12 @@ const main = async () => {
                         default:
                             break;
                     }
+
                 } while (opcionClientes != '0')
+
                 break;
             case '2':
-                const servicio = new Servicios();
-                do {
-                    opcionServicios = await inquirerMenuServicios();
-                    switch (opcionServicios) {
-                        case '1':
-                            const id = await leerInput('ID del servicio: ');
-                            const nombre = await leerInput('Nombre del servicio: ');
-                            const precio = await leerInput('Precio del servicio: ');
-                            servicio.crearServicio(id, nombre, precio);
-                            break;
-                        case '2':
-                            console.log(servicio.listadoArr);
-                            break;
-                        case '3':
-                            const idBorrar = await leerInput('Ingrese el ID del servicio a borrar: ');
-                            servicio.borrarServicio(idBorrar);
-                            break;
-                        default:
-                            break;
-                    }
 
-                } while (opcionServicios != '0')
-                break;
-            case '3':
-                const habitacion = new Habitaciones();
                 do {
                     opcionHabitacion = await inquirerMenuHabitaciones();
                     switch (opcionHabitacion) {
@@ -87,23 +73,32 @@ const main = async () => {
                         default:
                             break;
                     }
+
                 } while (opcionHabitacion != '0')
                 break;
-            case '4':
+            case '3':
+
                 do {
                     opcionReserva = await inquirerMenuReservas();
+
+                    const hab = new Habitaciones();
                     switch (opcionReserva) {
                         case '1':
-                            // Lógica para registrar cliente
+                            const id = await leerInput('Número de la Reserva: ');
+                            const idcli = await leerInput('Id del cliente: ');
+                            const hab = await leerInput('Número de la habitación: ');
+                            const precioxdia = await leerInput('Precio x dia: ');
+                            const fechaIngreso = await leerInput('Ingrese la fecha inicial (d,m,a): ');
+                            const cantdias = await leerInput('Número de días: ');
+                            const precio = cantdias * precioxdia;
+                            reserva.crearReserva(id, idcli, fechaIngreso, cantdias, hab);
                             break;
                         case '2':
-                            // Lógica para ver clientes registrados
+                            console.log(reserva.listadoArr);
                             break;
                         case '3':
-                            // Lógica para actualizar cliente
-                            break;
-                        case '4':
-                            // Lógica para borrar cliente
+                            const idBorrar = await leerInput('Ingrese el número de la reserva a borrar: ');
+                            reserva.cancelarReserva(idBorrar);
                             break;
                         default:
                             break;
@@ -114,7 +109,10 @@ const main = async () => {
                 break;
         }
 
-        //guardarDB(tareas.listadoArr);
+        guardarDBClientes(cliente.listadoArr);
+        guardarDBHabitaciones(habitacion.listadoArr);
+        guardarDBReservas(reserva.listadoArr);
+
         await pausa();
 
     } while (opt != '0')

@@ -15,15 +15,11 @@ const preguntas = [
             },
             {
                 value: '2',
-                name: `${'2'.red}. Servicios`
+                name: `${'2'.red}. Habitaciones `
             },
             {
                 value: '3',
-                name: `${'3'.red}. Habitaciones `
-            },
-            {
-                value: '4',
-                name: `${'4'.red}. Reservas`
+                name: `${'3'.red}. Reservas`
             },
             {
                 value: '0',
@@ -129,44 +125,6 @@ const inquirerMenuHabitaciones = async () =>{
     return otp;
 }
 
-const preguntasServicios = [
-    {
-        type: 'list',
-        name: 'opcion',
-        messge: 'Qué desea hacer?',
-        choices: [
-            {
-                value: '1',
-                name: `${'1'.red}. Crear servicio`
-            },
-            {
-                value: '2',
-                name: `${'2'.red}. Ver servicios`
-            },
-            {
-                value: '3',
-                name: `${'3'.red}. Borrar servicios`
-            },
-            {
-                value: '0',
-                name: `${'0'.red}. Volver`
-            }
-        ]
-    }
-]
-
-const inquirerMenuServicios = async () =>{
-    console.log("==================================================".green);
-    console.log("            Servicios".blue);
-    console.log("==================================================".green);
-    let otp = '';
-    const opt = await prompt(preguntasServicios).then(data => {
-        otp = data ['opcion']
-    })
-
-    return otp;
-}
-
 const preguntasReservas = [
     {
         type: 'list',
@@ -183,11 +141,7 @@ const preguntasReservas = [
             },
             {
                 value: '3',
-                name: `${'3'.red}. Editar reserva`
-            },
-            {
-                value: '4',
-                name: `${'4'.red}. Cancelar reserva`
+                name: `${'3'.red}. Cancelar reserva`
             },
             {
                 value: '0',
@@ -252,6 +206,5 @@ module.exports = {
     leerInput,
     inquirerMenuClientes,
     inquirerMenuHabitaciones,
-    inquirerMenuServicios,
     inquirerMenuReservas
 }

@@ -17,20 +17,20 @@ class Reservas{
         this._listado = {};
     }
 
-    registrarHabitacion(id, nombre, precio, cantidadPersonas){
-        const habitacion = new Habitacion(id, nombre, precio, cantidadPersonas);
-        this._listado[habitacion.id] = habitacion;
+    crearReserva(id, idCliente, fechaIngreso, dias, idHabitacion){
+        const reserva = new Reserva(id, idCliente, fechaIngreso, dias, idHabitacion);
+        this._listado[reserva.id] = reserva;
     }
 
-    borrarHabitacion(id) {
-        const habitacion = Object.values(this._listado).find(habitacion => habitacion.numero === id);
-        if (habitacion) {
-            delete this._listado[habitacion.numero];
-            console.log('Habitación borrado con éxito.');
+    cancelarReserva(id) {
+        const reserva = Object.values(this._listado).find(reserva => reserva.id === id);
+        if (reserva) {
+            delete this._listado[reserva.id];
+            console.log('Reserva borrada con éxito.');
         } else {
-            console.log('No existe habitacion con ese ID.');
+            console.log('No existe reserva con ese ID.');
         }
     }
 }
 
-module.exports = Habitaciones;
+module.exports = Reservas;

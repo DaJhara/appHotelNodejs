@@ -1,12 +1,12 @@
 const fs = require('fs');
 
-const guardarDB = (data) =>{
+const guardarDBReservas = (data) =>{
 
-    const archivo = './db/data.json';
+    const archivo = './db/dataReservas.json';
 
     fs.writeFileSync(archivo, JSON.stringify(data));
 }
 
 module.exports = {
-    guardarDB
+    guardarDBReservas
 }

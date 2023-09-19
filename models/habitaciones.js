@@ -26,7 +26,7 @@ class Habitaciones{
     constructor(){
         this._listado = {};
     }
-
+    
     registrarHabitacion(id, nombre, precio, cantidadPersonas){
         const habitacion = new Habitacion(id, nombre, precio, cantidadPersonas);
         this._listado[habitacion.id] = habitacion;
@@ -36,7 +36,7 @@ class Habitaciones{
         const habitacion = Object.values(this._listado).find(habitacion => habitacion.numero === id);
         if (habitacion) {
             delete this._listado[habitacion.numero];
-            console.log('Habitación borrado con éxito.');
+            console.log('Habitación borrada con éxito.');
         } else {
             console.log('No existe habitacion con ese ID.');
         }
