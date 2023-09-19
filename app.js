@@ -13,11 +13,12 @@ const fs = require('fs');
 console.clear();
 const main = async () => {
     let opt = '';
+    const habitacion = new Habitaciones();
+    const cliente = new Clientes();
+    const reserva = new Reservas();
     do {
         opt = await inquirerMenu();
-        const habitacion = new Habitaciones();
-        const cliente = new Clientes();
-        const reserva = new Reservas();
+
 
         switch (opt) {
             case '1':
@@ -109,14 +110,14 @@ const main = async () => {
                 break;
         }
 
-        guardarDBClientes(cliente.listadoArr);
-        guardarDBHabitaciones(habitacion.listadoArr);
-        guardarDBReservas(reserva.listadoArr);
+
 
         await pausa();
 
     } while (opt != '0')
-
+    guardarDBClientes(cliente.listadoArr);
+    guardarDBHabitaciones(habitacion.listadoArr);
+    guardarDBReservas(reserva.listadoArr);
 }
 
 main();
